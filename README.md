@@ -1,64 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Installation Details
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Step 1:  git clone https://github.com/bhavikbhimani/inventory-management.git
 
-## About Laravel
+Step 2:  Copy ".env.example" and rename to ".env" and put your system's Database details in .env
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Step 3: create a database in MySQL with the name "inventory-management" 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Step 4: composer install && php artisan key:generate && php artisan jwt:secret && php artisan config:cache && php artisan cache:clear && php artisan route:clear && php artisan view:clear && composer clear-cache && composer dump-autoload && php artisan migrate && php artisan db:seed && php artisan serve
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Step 5: "http://127.0.0.1:8000/" open this URL in the browser
 
-## Learning Laravel
+Step 6: Register a new user OR login with the below credentials
+        Email: bhavik@example.com
+        Password: 12345678
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+================================================================================================================================================================================================================
 
-## Laravel Sponsors
+API Details
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+PostMan collection: https://api.postman.com/collections/15750146-7ecaf95c-7c83-4f5c-84b8-6749070fabb1?access_key=PMAT-01HV31MK20AWNX7ZT0WX3RF6DQ
+API End Point: http://127.0.0.1:8000/api/
 
-### Premium Partners
+Step 1: Import the Postman collection using the above link 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Step 2: In the Postman collection, there are 2 folders
+            Collection name: inventory-management
+                Folder 1: Auth
+                    API 1: login (http://127.0.0.1:8000/api/login) (POST)
+                    API 2: signup (http://127.0.0.1:8000/api/signup) (POST)
+                    API 3: logout (http://127.0.0.1:8000/api/logout) (POST)
+                Folder 2: Products
+                    API 1: get products (http://127.0.0.1:8000/api/products?category_id={category_id}&min_price={min_price}&max_price={max_price}) (GET)
+                    API 2: get product by ID (http://127.0.0.1:8000/api/products/{id}) (GET)
+                    API 3: create product (http://127.0.0.1:8000/api/products/store) (POST)
+                    API 4: update product by ID (http://127.0.0.1:8000/api/products/{id}) (POST)
+                    API 5: delete product by ID (http://127.0.0.1:8000/api/products/{id}) (DELETE)
 
-## Contributing
+Step 3: first hit login (http://127.0.0.1:8000/api/login) API and in response get token
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Step 4: set this token to a Bearer token in the authorization
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Step 5: now hit any API.
